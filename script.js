@@ -1,5 +1,5 @@
 // Task 1: Verification Log
-
+console.log("Status Manager Started");
 // Global variable setup (required for Task 10 using setInterval/clearInterval)
 let intervalId = null;
 
@@ -16,12 +16,12 @@ const itemList = document.getElementById("item-list");
 // --- Task 3: Selecting and Changing Inner HTML ---
 // Write the code here to select the mainTitle and update its innerHTML:
 // Example: mainTitle.innerHTML = "New Title";
-
+mainTitle.innerHTML = "DOM Project: Ready!";
 /* ======================================= */
 // --- Task 4: Attribute Modification ---
 // Write the code here to use setAttribute() on the toggleButton element
 // to add the required 'data-action' attribute.
-
+toggleButton.setAttribute("data-action", "status-toggle");
 /* ======================================= */
 // --- Task 9: Looping and Applying Changes ---
 // Define and call the highlightListItems() function here so it runs on load.
@@ -31,7 +31,18 @@ const itemList = document.getElementById("item-list");
 /* ======================================= */
 // --- Tasks 5, 6, 7 & 8: Toggle Functionality ---
 // Define the functions (e.g., toggleStatus, createTimestamp) and event listeners
+function toggleStatus(e){
+    e.preventDefault();
+    const statusDiv = document.getElementById('status-output');
+    if(statusDiv.classList.contains("hidden")){
+        document.getElementById('main-title').style.backgroundColor = "yellow";
+    }else{
+        document.getElementById('main-title').style.backgroundColor = "";
+    }
+    statusDiv.classList.toggle("hidden");
+}
 // here to handle the click event on the toggleButton [6, 7].
+toggleButton.addEventListener("click", toggleStatus);
 
 /* ======================================= */
 // --- Task 10: Timed Animation ---
